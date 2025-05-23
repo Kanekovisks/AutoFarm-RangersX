@@ -503,7 +503,7 @@ if (ModeStage = "Demon Forest")
 if (ModeStage = "Leaf Village")
 {
 	global StageNum:=4
-	global StageCheckTXT:="|<>*42$151.00001k1k000000000003zzzzzU0000Q0s000000000001zzvzzk000070C000000000000zztzzs00000k3U00000000000Tzxzzw00000A1s00000000000bzyzzz"
+	global StageCheckTXT:="|<>*41$166.zzs0000s0C000000000000DzzwDzzzk0000s0s000000000000jzzvzzzy00001k1k000000000003zzzzzzy000003U7000000000000DzzTzy"
 	global StageTXT:="|<>*72$129.y7wTw000000001zzzzzzU7kzXzU00000000LzzzxsE0y7wzk000000002xzznT287kzlz000000000P7zwTzzlyDzDw00000000E8zz3zrw7zzzzU00011VU603zyTzzzzxzzz0000M3w0k8Dwzzzzzzzzzs3U03Vw0CF0TUzzzwzzzzzUy01SD00k87w7zzzrzzzzyDk0Tzs0610nVzzzzzzzzzXsk3gDbxy8CQTzzzzzzzztz7kxtwy1N7nzzzzztyDzwTsLu7wv0ERDzvzzzy11zznv2zUDzPG3tzszzzzm8TzzzzLz1zxzyTzyTzzzzzXzzzz9Tz1zzz9xzjzzzzU"
 }
 
