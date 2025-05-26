@@ -301,7 +301,7 @@ global StartRoomPos:=[335,485,475,525]
 
 ; Menu in lobby area
 global LobbyMenuPos:=[16,303,87,411]
-global BossEventPos:=[400,375,515,405]
+global BossEventPos:=[371,362,534,410]
 global GameEndedPos:=[140,397,545,410]
 global LeavePos:=[8,326,160,387]
 
@@ -375,7 +375,7 @@ global Upgrade3TXT:="|<>436438@0.90$80.zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
 ; Modes
 global RangerCheckTXT:="|<>00BEFF@0.90$36.000800600Q00Ds0Q00Dz0S00Dzyz00DzzzU0Dzzzk0Tzzzs0Tzzzw0Tzzzw0Tzzzy0zzzzz0zDzzzUyDzzzkwDzzzks7zkTsk7w0Tw1702Dy301zDz3UDzDz7VzzDs7zzz7U3zzz001zzzU00zzzU00TzzU00DzzU007zzk003zzk003zzk001zzs0U"
 global RangerCooldownTXT:="|<>FF2525@0.90$2.y"
-global BossEventTXT:="|<>FF0000@0.90/A60000@0.90$14.zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzy"
+global BossEventTXT:="|<>5555FF@0.90$11.zzzzzzzzzzzzzzzzzzzzzzzzzw000000000000008"
 
 if (ModeDifficulty = "Normal") ; Normal Mode
 	global DifficultyTXT:="|<>0DA300@0.90$8.zzzzzzzzzzy"
@@ -775,7 +775,7 @@ InstanceCheck()
 
 StageSelect()
 {
-	Selection:	
+	Selection:
 	MouseMove, winX + 167, winY + 300, 10
 	Sleep 100
 	Loop, 10
@@ -850,7 +850,7 @@ StageSelect()
 				{
 					global StageNum:=1
 					global AllDone:=1
-					ToolTip, All Stages Done!, winW * 0.01, winH + 25,2					
+					ToolTip, All Stages Done!, winW * 0.01, winH + 25,2
 					Gosub, StagesList
 				}
 
@@ -863,7 +863,7 @@ StageSelect()
 					global ModeUpgrade:=1
 					return
 				}
-				
+
 				Goto, Selection
 			}
 
@@ -957,7 +957,7 @@ PortalFarm()
 		FindText().Click(LVRX, LVRY, MouseMovementSpeed,"L",,1)
 		Sleep 1000
 	}
-	
+
 	if (LeaveImg:=FindText(LVX:="wait", LVY:=3, LeavePos[1], LeavePos[2], LeavePos[3], LeavePos[4], 0, 0, LeaveTXT))
 	{
 		Sleep 200
@@ -965,7 +965,7 @@ PortalFarm()
 		FindText().Click(LVX, LVY, MouseMovementSpeed,"L",,1)
 		Sleep 1000
 	}
-	
+
 	if (LobbyImg:=FindText(LX:="wait", LY:=3, LobbyPos[1], LobbyPos[2], LobbyPos[3], LobbyPos[4], 0, 0, LobbyTXT))
 	{
 		if (PlayImg:=FindText(LMX:="wait", LMY:=3, LobbyMenuPos[1], LobbyMenuPos[2], LobbyMenuPos[3], LobbyMenuPos[4], 0, 0, PlayTXT))
@@ -1022,7 +1022,7 @@ PortalFarm()
 	else
 	{
 		global ItemPortal:=0
-		ToolTip, No Portals Found, winW * 0.01, winH + 25,2	
+		ToolTip, No Portals Found, winW * 0.01, winH + 25,2
 	}
 	return
 }
@@ -1050,7 +1050,7 @@ FarmMode()
 		}
 		else
 			ToolTip, %ModeSelected% Mode, winW * 0.80, winH,5
-		
+
 		if (CheckUnits)
 			UnitSlotsCheck()
 		if (ModeUpgrade && !Maxed)
@@ -1068,7 +1068,7 @@ FarmMode()
 
 		if (GameEndedImg:=FindText(GEX, GEY, GameEndedPos[1], GameEndedPos[2], GameEndedPos[3], GameEndedPos[4], 0, 0, GameEndedTXT))
 		{
-			Sleep 500	
+			Sleep 500
 
 			global Maxed:=0
 			global Upgrading:=0
@@ -1089,7 +1089,7 @@ FarmMode()
 			if (!Retry)
 			{
 				if (NextImg:=FindText(NTX:="wait", NTY:=2, FarmingPos[1], FarmingPos[2], FarmingPos[3], FarmingPos[4], 0, 0, NextTXT))
-				{		
+				{
 					ToolTip, Continuing!, winW * 0.01, winH + 25,2
 					Sleep 200
 					FindText().Click(NTX, NTY, MouseMovementSpeed, "L",, 1)
@@ -1124,7 +1124,7 @@ FarmMode()
 								global Farming:=0
 								global ModeChapter:=1
 								ToolTip,,,,4
-							}		
+							}
 						}
 						global CheckChapter:=0
 					}
@@ -1144,7 +1144,7 @@ FarmMode()
 				ToolTip, Loading, winW * 0.01, winH + 50,3
 				ToolTip,,,,4
 				ToolTip,,,,5
-			}			
+			}
 		}
 	}
 	return
@@ -1235,7 +1235,7 @@ StartMode()
 
 			if (ModePortal && AllDone)
 			{
-				PortalFarm()				
+				PortalFarm()
 				return
 			}
 
@@ -1304,8 +1304,25 @@ StartMode()
 	EventMode:
 	if (ModeSelected = "Event")
 	{
-		MsgBox No Event active right now...
-		Reload
+		if (PlayImg:=FindText(LMX:="wait", LMY:=3, LobbyMenuPos[1], LobbyMenuPos[2], LobbyMenuPos[3], LobbyMenuPos[4], 0, 0, PlayTXT))
+		{
+			ToolTip, Play Found, winW * 0.01, winH + 25,2
+			FindText().Click(649, 104, MouseMovementSpeed, "L",,1)
+			Sleep 500
+			FindText().Click(778, 253, MouseMovementSpeed, "L",,1)
+			Sleep 1000
+		}
+
+
+		if (BossEventImg:=FindText(BEX:="wait", BEY:=3, BossEventPos[1], BossEventPos[2], BossEventPos[3], BossEventPos[4], 0, 0, BossEventTXT))
+		{
+			ToolTip, Entering Boss Event, winW * 0.01, winH + 25, 2
+			FindText().Click(BEX, BEY, MouseMovementSpeed, "L",,1)
+			Sleep 1000
+		}
+
+		global InLobby:=0
+		MouseMove, BasicMousePos[1], BasicMousePos[2], 10
 	}
 
 
@@ -1449,10 +1466,10 @@ if WinExist(Title)
 	if WinActive(Title)
 	{
 		Essentials()
-		InstanceCheck()	
-		
+		InstanceCheck()
+
 		if (!InLobby)
-		{			
+		{
 			if (Farming)
 				FarmMode()
 		}
@@ -1460,7 +1477,7 @@ if WinExist(Title)
 		if (InLobby)
 		{
 			if (CheckUnits)
-				UnitSlotsCheck()	
+				UnitSlotsCheck()
 
 			StartMode()
 		}
